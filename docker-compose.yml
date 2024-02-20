@@ -1,85 +1,3 @@
-# # docker-compose.yml
-# version: "3"
-
-# networks:
-#   melon-demo:
-#     driver: bridge
-
-# volumes:
-#   melon-demo-database:
-
-# services:
-#   melon-demo-nginx:
-#     image: jsdc2021/melon-demo-nginx:v0.20231003.3
-#     container_name: melon-demo-nginx
-#     ports:
-#       - 9060:80
-#     networks:
-#       - melon-demo
-#     depends_on:
-#       - melon-demo-frontend
-
-#   melon-demo-client:
-#     image: jsdc2021/melon-client-next:b0.20240208.80.chny.2
-#     container_name: melon-demo-client
-#     networks:
-#       - melon-demo
-#     depends_on:
-#       - melon-demo-frontend
-
-#   # melon-demo-client:
-#   #   image: jsdc2021/melon-demo-client-vanilla:v0.20230927.6
-#   #   container_name: melon-demo-client
-#   #   networks:
-#   #     - melon-demo
-#   #   depends_on:
-#   #     - melon-demo-frontend
-
-#   melon-demo-frontend:
-#     image: jsdc2021/melon-demo-frontend-next:v0.20230912.2
-#     container_name: melon-demo-frontend
-#     networks:
-#       - melon-demo
-#     depends_on:
-#       - melon-demo-backend
-
-#   melon-demo-backend:
-#     image: jsdc2021/melon-demo-backend-express:v0.20230912.3
-#     container_name: melon-demo-backend
-#     entrypoint: ["/app/entrypoints/entrypoint.sh"]
-#     networks:
-#       - melon-demo
-#     volumes:
-#       - ./static:/app/src/static
-#     depends_on:
-#       - melon-demo-postgres
-
-#   melon-demo-postgres:
-#     image: postgis/postgis:14-3.3
-#     container_name: melon-demo-postgres
-#     environment:
-#       POSTGRES_USER: ${POSTGRES_USERNAME}
-#       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-#       APP_DB_USER: ${POSTGRES_USERNAME}
-#       APP_DB_PASS: ${POSTGRES_PASSWORD}
-#       APP_DB_NAME: ${POSTGRES_DATABASE}
-#       PGDATA: /data/postgres
-#     volumes:
-#       - ./database-entrypoint:/docker-entrypoint-initdb.d/
-#       - melon-demo-database:/data/postgres
-#     networks:
-#       - melon-demo
-
-#   melon-demo-pgadmin:
-#     image: dpage/pgadmin4
-#     container_name: melon-demo-pgadmin
-#     environment:
-#       PGADMIN_DEFAULT_EMAIL: ${PGADMIN4_EMAIL}
-#       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN4_PASSWORD}
-#     ports:
-#       - "9061:80"
-#     networks:
-#       - melon-demo
 version: "3"
 
 networks:
@@ -119,6 +37,8 @@ services:
     environment:
       POSTGRES_USER: ${postgres_user}
       POSTGRES_PASSWORD: ${postgres_password}
+      APP_DB_USER: ${postgres_user}
+      APP_DB_PASS: ${postgres_password}
       APP_DB_NAME: ${postgres_database}
       PGDATA: /data/postgres
     volumes:
