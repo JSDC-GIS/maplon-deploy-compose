@@ -9,6 +9,16 @@ volumes:
   maplon-cache:
 
 services:
+  maplon-nginx:
+    image: jsdc2021/maplon-nginx:b0.20240220.3
+    container_name: maplon-nginx
+    ports:
+      - 9060:80
+    networks:
+      - maplon
+    depends_on:
+      - maplon-backend
+
   maplon-backend:
     image: jsdc2021/maplon-backend-nest:b0.20240219.57
     container_name: maplon-backend
@@ -17,8 +27,8 @@ services:
       - maplon
     volumes:
       - ./storage:/app/storage
-    ports:
-      - 8080:8080
+    # ports:
+    #   - 8080:8080
     depends_on:
       - maplon-postgres
 
