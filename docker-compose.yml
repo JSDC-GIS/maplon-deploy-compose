@@ -31,7 +31,7 @@ services:
       - maplon-postgres
 
   maplon-docs:
-    image: jsdc2021/maplon-docs-next:b0.20240220.10
+    image: jsdc2021/maplon-docs-next:b0.20240220.11
     container_name: maplon-docs
     networks:
       - maplon
