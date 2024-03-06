@@ -5,15 +5,24 @@ networks:
     driver: bridge
 
 volumes:
-  maplon-postgres:
   maplon-cache:
 
 services:
   maplon-nginx:
-    image: jsdc2021/maplon-nginx:b0.20240220.4
+    image: jsdc2021/maplon-nginx:b0.20240305.15
     container_name: maplon-nginx
     ports:
       - ${service_port}:80
+    networks:
+      - maplon
+    depends_on:
+      - maplon-backend
+
+  maplon-cms:
+    image: jsdc2021/maplon-cms-next:b0.20240306.test.2
+    container_name: maplon-cms
+    ports:
+      - 8088:3000
     networks:
       - maplon
     depends_on:
@@ -57,7 +66,7 @@ services:
       PGDATA: /data/postgres
     volumes:
       - ./database-entrypoint:/docker-entrypoint-initdb.d/
-      - maplon-postgres:/data/postgres
+      - ./maplon-postgres:/data/postgres
     networks:
       - maplon
 
