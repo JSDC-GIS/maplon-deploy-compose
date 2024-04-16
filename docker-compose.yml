@@ -9,10 +9,20 @@ volumes:
 
 services:
   maplon-nginx:
-    image: jsdc2021/maplon-nginx:b0.20240305.15
+    image: jsdc2021/maplon-nginx:b0.20240416.18
     container_name: maplon-nginx
     ports:
       - ${service_port}:80
+    networks:
+      - maplon
+    depends_on:
+      - maplon-backend
+
+  maplon-client:
+    image: jsdc2021/maplon-client-next:b0.20240416.20
+    container_name: maplon-client
+    ports:
+      - 8087:3000
     networks:
       - maplon
     depends_on:
