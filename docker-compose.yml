@@ -19,7 +19,7 @@ services:
       - maplon-backend
 
   maplon-client:
-    image: jsdc2021/maplon-client-next:b0.20240418.35
+    image: jsdc2021/maplon-client-next:b0.20240418.37
     container_name: maplon-client
     ports:
       - 8087:3000
