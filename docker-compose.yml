@@ -39,7 +39,7 @@ services:
       - maplon-backend
 
   maplon-backend:
-    image: jsdc2021/maplon-backend-nest:b0.20240612.143
+    image: jsdc2021/maplon-backend-nest:b0.20240716.154
     container_name: maplon-backend
     entrypoint: ["/app/entrypoint/entrypoint.sh"]
     networks:
