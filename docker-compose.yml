@@ -29,7 +29,7 @@ services:
       - maplon-backend
 
   maplon-cms:
-    image: jsdc2021/maplon-cms-next:b0.20251019.363
+    image: jsdc2021/maplon-cms-next:b0.20251104.x
     container_name: maplon-cms
     ports:
       - 8088:3000
