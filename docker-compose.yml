@@ -29,7 +29,7 @@ services:
       - maplon-backend
 
   maplon-cms:
-    image: jsdc2021/maplon-cms-next:b0.20260520.378
+    image: jsdc2021/maplon-cms-next:b0.20260530.379
     container_name: maplon-cms
     ports:
       - 8088:3000
@@ -39,7 +39,7 @@ services:
       - maplon-backend
 
   maplon-backend:
-    image: jsdc2021/maplon-backend-nest:b0.20260527.184
+    image: jsdc2021/maplon-backend-nest:b0.20260530.186
     container_name: maplon-backend
     entrypoint: ["/app/entrypoint/entrypoint.sh"]
     networks:
